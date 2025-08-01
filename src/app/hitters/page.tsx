@@ -9,6 +9,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import { CellContext } from "@tanstack/react-table";
 import { getStatColor } from "@/components/player/StatDisplay";
 import { JSX } from "react";
+import Link from "next/link";
 
 function coloredStatCell(info: CellContext<Player, number>): JSX.Element{
   const value = info.getValue();
@@ -18,11 +19,20 @@ function coloredStatCell(info: CellContext<Player, number>): JSX.Element{
 
 const columns: ColumnDef<Player>[] = [
   {
+    accessorKey: "name",
     header: "Name",
-    accessorFn: (row) => `${row.firstName} ${row.lastName}`,
     id: "name",
-    enableSorting: true,
-
+    cell: ({ row }) => {
+      const player = row.original;
+      return (
+        <Link
+          href={`/player/${player.id}`}
+          className="hover:underline"
+        >
+          {player.fullName}
+        </Link>
+      );
+    },
   },
   {
     header: "Year",

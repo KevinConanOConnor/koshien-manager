@@ -35,7 +35,6 @@ type TableProps<T> = {
 
 export function Table<T>({ data, columns }: TableProps<T>) {
   
-  const [columnVisibility, setColumnVisibility] = React.useState<Record<string, boolean>>({});
 
   const table = useReactTable({
     data,
@@ -44,8 +43,6 @@ export function Table<T>({ data, columns }: TableProps<T>) {
     getSortedRowModel: getSortedRowModel(),
     enableColumnResizing: true,
     columnResizeMode: "onChange",
-    state: {columnVisibility},
-    onColumnVisibilityChange: setColumnVisibility,
   });
 
 
