@@ -9,12 +9,34 @@ import {
   ColumnDef,
 } from "@tanstack/react-table";
 
+import {
+  DndContext,
+  PointerSensor,
+  useSensor,
+  useSensors,
+  closestCenter,
+} from "@dnd-kit/core";
+
+import {
+  SortableContext,
+  useSortable,
+  arrayMove,
+  horizontalListSortingStrategy,
+} from "@dnd-kit/sortable";
+
+import { CSS } from "@dnd-kit/utilities";
+
 type TableProps<T> = {
   data: T[];
   columns: ColumnDef<T, any>[];
 };
 
+
+
 export function Table<T>({ data, columns }: TableProps<T>) {
+  
+  const [columnVisibility, setColumnVisibility] = React.useState<Record<string, boolean>>({});
+
   const table = useReactTable({
     data,
     columns,
@@ -22,7 +44,10 @@ export function Table<T>({ data, columns }: TableProps<T>) {
     getSortedRowModel: getSortedRowModel(),
     enableColumnResizing: true,
     columnResizeMode: "onChange",
+    state: {columnVisibility},
+    onColumnVisibilityChange: setColumnVisibility,
   });
+
 
   return (
 <div className="overflow-x-auto bg-gray-900 border border-gray-700" 
@@ -88,7 +113,7 @@ export function Table<T>({ data, columns }: TableProps<T>) {
                   >
 
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  
+
                 </td>
                 );
               })}
