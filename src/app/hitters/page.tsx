@@ -10,11 +10,13 @@ import { CellContext } from "@tanstack/react-table";
 import { getStatColor } from "@/components/player/StatDisplay";
 import { JSX } from "react";
 import Link from "next/link";
+import { formatStat } from "@/lib/playerRatings";
 
 function coloredStatCell(info: CellContext<Player, number>): JSX.Element{
-  const value = info.getValue();
-  const colorClass = getStatColor(value);
-  return <span className={`font-semibold ${colorClass}`}>{value}</span>;
+  const rawValue = info.getValue();
+  const scaledValue = formatStat(rawValue)
+  const colorClass = getStatColor(scaledValue);
+  return <span className={`font-semibold ${colorClass}`}>{scaledValue}</span>;
 }
 
 const columns: ColumnDef<Player>[] = [

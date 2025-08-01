@@ -16,68 +16,68 @@ export const players: Player[] = [
     weightKg: 70,
     hittingOverall: 0,
     pitchingOverall: 0,
-    fieldingOverall:0,
+    fieldingOverall: 0,
 
     personality: {
-      BaseballIQ: 65,
-      WorkEthic: 70,
-      Composure: 85,
-      Charisma: 50,
-      Coachability: 60,
-      Fortitude: 75,
-      Flair: 40
+      BaseballIQ: 470,
+      WorkEthic: 520,
+      Composure: 680,
+      Charisma: 400,
+      Coachability: 500,
+      Fortitude: 600,
+      Flair: 350,
     },
 
-    rawStrength: 80,
-    coreStrength: 75,
-    speed: 65,
+    rawStrength: 600,
+    coreStrength: 570,
+    speed: 500,
 
     positionalRange: {
-      "P": 85,
-      "RF": 20
+      "P": 750,
+      "RF": 250,
     },
-    fieldingTechnique: 55,
-    armStrength: 90,
-    armAccuracy: 70,
+    fieldingTechnique: 500,
+    armStrength: 720,
+    armAccuracy: 550,
 
-    contact: 50,
-    gamePower: 60,
-    battingEye: 45,
+    contact: 420,
+    gamePower: 500,
+    battingEye: 380,
 
-    potentialCoordination: 65,
-    potentialStrength: 90,
-    potentialSpeed: 70,
+    potentialCoordination: 500,
+    potentialStrength: 720,
+    potentialSpeed: 580,
 
     hasPitchingHistory: true,
-    pitchingVelocity: 95,
-    pitchingControl: 70,
-    pitchingMovement: 80,
-    pitchingStamina: 60,
+    pitchingVelocity: 780, // ≈104 mph real-world
+    pitchingControl: 520,
+    pitchingMovement: 600,
+    pitchingStamina: 450,
 
     pitches: [
       {
         type: PitchType.FourSeamFastball,
-        velocity: 92,
-        control: 65,
-        movement: 45
+        velocity: 750,
+        control: 480,
+        movement: 350,
       },
       {
         type: PitchType.Slider,
-        velocity: 80,
-        control: 60,
-        movement: 75
+        velocity: 620,
+        control: 460,
+        movement: 600,
       },
       {
         type: PitchType.Changeup,
-        velocity: 76,
-        control: 55,
-        movement: 60
-      }
+        velocity: 580,
+        control: 430,
+        movement: 480,
+      },
     ],
 
-    confidence: 70,
-    energy: 90,
-    bonds: ["Sawamura"]
+    confidence: 550,
+    energy: 800,
+    bonds: ["Sawamura"],
   },
 
   {
@@ -92,50 +92,52 @@ export const players: Player[] = [
     weightKg: 65,
     hittingOverall: 0,
     pitchingOverall: 0,
-    fieldingOverall:0,
+    fieldingOverall: 0,
 
     personality: {
-      BaseballIQ: 55,
-      WorkEthic: 60,
-      Composure: 50,
-      Charisma: 45,
-      Coachability: 60,
-      Fortitude: 55,
-      Flair: 50
+      BaseballIQ: 400,
+      WorkEthic: 420,
+      Composure: 380,
+      Charisma: 370,
+      Coachability: 420,
+      Fortitude: 400,
+      Flair: 390,
     },
 
-    rawStrength: 55,
-    coreStrength: 50,
-    speed: 60,
+    rawStrength: 420,
+    coreStrength: 400,
+    speed: 480,
 
     positionalRange: {
-      "2B": 55,
-      "SS": 45,
-      "3B": 40
+      "2B": 450,
+      "SS": 370,
+      "3B": 320,
     },
-    fieldingTechnique: 50,
-    armStrength: 50,
-    armAccuracy: 50,
+    fieldingTechnique: 400,
+    armStrength: 400,
+    armAccuracy: 400,
 
-    contact: 55,
-    gamePower: 40,
-    battingEye: 50,
+    contact: 450,
+    gamePower: 320,
+    battingEye: 420,
 
-    potentialCoordination: 60,
-    potentialStrength: 55,
-    potentialSpeed: 60,
+    potentialCoordination: 480,
+    potentialStrength: 450,
+    potentialSpeed: 480,
 
     hasPitchingHistory: false,
-    pitchingVelocity: 40,
-    pitchingControl: 45,
-    pitchingMovement: 40,
-    pitchingStamina: 60,
+    pitchingVelocity: 320,
+    pitchingControl: 360,
+    pitchingMovement: 320,
+    pitchingStamina: 400,
+
     pitches: [],
 
-    confidence: 50,
-    energy: 80,
-    bonds: []
+    confidence: 400,
+    energy: 700,
+    bonds: [],
   },
+
   {
     id: "4",
     firstName: "Yuuki",
@@ -151,34 +153,34 @@ export const players: Player[] = [
     fieldingOverall: 0,
 
     personality: {
-      BaseballIQ: 90,
-      WorkEthic: 95,
-      Composure: 85,
-      Charisma: 92,
-      Coachability: 88,
-      Fortitude: 90,
-      Flair: 65
+      BaseballIQ: 850,
+      WorkEthic: 900,
+      Composure: 800,
+      Charisma: 880,
+      Coachability: 850,
+      Fortitude: 880,
+      Flair: 500,
     },
 
-    rawStrength: 88,
-    coreStrength: 85,
-    speed: 60,
+    rawStrength: 830,
+    coreStrength: 800,
+    speed: 480,
 
     positionalRange: {
-      "1B": 85,
-      "3B": 40
+      "1B": 820,
+      "3B": 350,
     },
-    fieldingTechnique: 75,
-    armStrength: 70,
-    armAccuracy: 72,
+    fieldingTechnique: 700,
+    armStrength: 600,
+    armAccuracy: 620,
 
-    contact: 90,
-    gamePower: 78,
-    battingEye: 88,
+    contact: 850,
+    gamePower: 720,
+    battingEye: 840,
 
-    potentialCoordination: 92,
-    potentialStrength: 85,
-    potentialSpeed: 60,
+    potentialCoordination: 880,
+    potentialStrength: 800,
+    potentialSpeed: 480,
 
     hasPitchingHistory: false,
     pitchingVelocity: 0,
@@ -187,12 +189,12 @@ export const players: Player[] = [
     pitchingStamina: 0,
     pitches: [],
 
-    confidence: 88,
-    energy: 85,
-    bonds: ["Miyuki", "Eijun", "Furuya"]
-},
-  
+    confidence: 800,
+    energy: 750,
+    bonds: ["Miyuki", "Eijun", "Furuya"],
+  },
 ];
+
 
 players.forEach((player, i) => {
   players[i] = recalculateOveralls(player);

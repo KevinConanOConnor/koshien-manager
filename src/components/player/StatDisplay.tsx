@@ -15,9 +15,16 @@ export default function StatDisplay({ name, value }: Props) {
 }
 
 export function getStatColor(value: number): string {
-  if (value > 100) return "text-purple-600";      // Elite tier
-  if (value >= 80) return "text-green-600";
-  if (value >= 60) return "text-yellow-600";
-  if (value >= 40) return "text-orange-500";
-  return "text-red-500";
+  if (value >= 120) return "text-purple-600";      // Rare elite, NPB Star
+  if (value >= 110) return "text-purple-500";      // Top High School National level
+  if (value >= 100) return "text-violet-500";      // Top high school tier
+  if (value >= 90) return "text-indigo-500";       // Excellent
+  if (value >= 80) return "text-blue-500";         // Strong
+  if (value >= 70) return "text-blue-400";         // Solid
+  if (value >= 60) return "text-blue-300";         // Average
+  if (value >= 50) return "text-gray-300";         // Slightly below average
+  if (value >= 40) return "text-gray-500";         // Mediocre
+  if (value >= 30) return "text-zinc-400";         // Poor
+  if (value >= 20) return "text-zinc-600";         // Very poor
+  return "text-zinc-800";                          // Dreadful
 }

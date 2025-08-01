@@ -1,5 +1,10 @@
 import { Player } from "@/models/player";
 
+export function formatStat(raw: number): number {
+  return Math.min(Math.round(raw / 7.1), 140);
+};
+
+
 export function recalculateOveralls(player: Player): Player {
   return {
     ...player,
