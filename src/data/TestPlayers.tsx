@@ -135,7 +135,63 @@ export const players: Player[] = [
     confidence: 50,
     energy: 80,
     bonds: []
-  }
+  },
+  {
+    id: "4",
+    firstName: "Yuuki",
+    lastName: "Tetsuya",
+    fullName: "Yuuki Tetsuya",
+    yearLabel: "Senior",
+    jerseyNumber: 3,
+    year: 3,
+    heightCm: 180,
+    weightKg: 78,
+    hittingOverall: 0,
+    pitchingOverall: 0,
+    fieldingOverall: 0,
+
+    personality: {
+      BaseballIQ: 90,
+      WorkEthic: 95,
+      Composure: 85,
+      Charisma: 92,
+      Coachability: 88,
+      Fortitude: 90,
+      Flair: 65
+    },
+
+    rawStrength: 88,
+    coreStrength: 85,
+    speed: 60,
+
+    positionalRange: {
+      "1B": 85,
+      "3B": 40
+    },
+    fieldingTechnique: 75,
+    armStrength: 70,
+    armAccuracy: 72,
+
+    contact: 90,
+    gamePower: 78,
+    battingEye: 88,
+
+    potentialCoordination: 92,
+    potentialStrength: 85,
+    potentialSpeed: 60,
+
+    hasPitchingHistory: false,
+    pitchingVelocity: 0,
+    pitchingControl: 0,
+    pitchingMovement: 0,
+    pitchingStamina: 0,
+    pitches: [],
+
+    confidence: 88,
+    energy: 85,
+    bonds: ["Miyuki", "Eijun", "Furuya"]
+},
+  
 ];
 
 players.forEach((player, i) => {

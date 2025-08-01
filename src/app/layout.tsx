@@ -13,7 +13,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className="flex min-h-screen bg-gray-100 text-gray-900">
         <SideNav />
-        <main className="flex-1 p-6 overflow-y-auto">
+        <main className="flex-1 p-6">
           {children}
         </main>
       </body>
