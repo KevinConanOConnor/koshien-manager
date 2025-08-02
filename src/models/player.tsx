@@ -18,10 +18,11 @@ export interface Player {
   id: string;
   firstName: string;
   lastName: string;
-  jerseyNumber: number;
   year: number;                     // 1–3 (Freshman, Sophomore, Senior)
   heightCm: number;
-  weightKg: number;
+  
+  battingSide: "L" | "R" | "S";
+  throwingHand: "L" | "R";
 
   hittingOverall: number;
   fieldingOverall: number;
@@ -36,28 +37,35 @@ export interface Player {
   speed: number;                   // GAME STAT
 
   // ⚾ Fielding & Throwing
-  positionalRange: Partial<Record<FieldingPosition, number>>;  // GAME STAT
+  positionalRange: Partial<Record<FieldingPosition, number>>;  // GAME STAT Develops from Baseball IQ + Speed + (Height if 1B)
   fieldingTechnique: number;       // GAME STAT
   armStrength: number;             // GAME STAT (develops from pitchingVelocity)
   armAccuracy: number;             // GAME STAT (develops from pitchingControl)
+  //Catching Ability
+  gameCalling: number;
 
   // 🥎 Hitting
   contact: number;                 // GAME STAT
   gamePower: number;              // GAME STAT
   battingEye: number;             // GAME STAT
 
+  //Pitching Arsenal (May be empty)
+  pitches: Pitch[]; 
+
+
   // 📈 Potentials (Dev Stats)
-  potentialCoordination: number;       // Governs Contact + Eye + Fielding Technique
+  potentialHitting: number;       // Governs Contact + GamePower
+  potentialCoordination: number; //Governs Eye + Fielding dev
   potentialStrength: number;           // Raw/Core Strength growth
   potentialSpeed: number;              // Speed development
 
-  // 🧪 Pitching Potential + Arsenal
+  // 🧪 Pitching Potential 
   hasPitchingHistory: boolean;        // If true, UI displays pitcher view
   pitchingVelocity: number;           // DEV STAT - Governs max velocity + arm strength
   pitchingControl: number;            // DEV STAT - Governs command + arm accuracy
   pitchingMovement: number;           // DEV STAT - Governs break on pitches
   pitchingStamina: number;
-  pitches: Pitch[];                   // Arsenal (may be empty)
+
 
 
 
@@ -71,6 +79,16 @@ export interface Player {
   // 🔧 Utilities
   fullName?: string;
   yearLabel?: string;
+
+  //MetaData about what archetype player generated 
+  abilitySigma?: number;
+  potentialSigma?: number,
+  personalitySigma?: number,
+
+
+  hittingArchetype?: string;
+  hittingPotentialArchetype?: string;
+  pitchingArchetype?: string;
 }
 
 

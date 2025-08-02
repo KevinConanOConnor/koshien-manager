@@ -2,6 +2,11 @@
 
 import { Player } from "@/models/player";
 import StatDisplay from "@/components/player/StatDisplay";
+import { formatStat } from "@/lib/playerRatings";
+
+const Display = ({ name, value }: { name: string; value: number }) => (
+  <StatDisplay name={name} value={formatStat(value)} />
+);
 
 export default function PitchingOverviewTab({ player }: { player: Player }) {
   return (
@@ -10,7 +15,7 @@ export default function PitchingOverviewTab({ player }: { player: Player }) {
       <section>
         <h2 className="text-xl font-bold mb-2">Pitching Overview</h2>
         <div className="grid grid-cols-1 max-w-xs">
-          <StatDisplay name="Endurance" value={player.pitchingStamina} />
+          <Display name="Endurance" value={player.pitchingStamina} />
         </div>
       </section>
 
@@ -28,9 +33,9 @@ export default function PitchingOverviewTab({ player }: { player: Player }) {
                   {pitch.type}
                 </div>
                 <div className="grid grid-cols-3 gap-4">
-                  <StatDisplay name="Velocity" value={pitch.velocity} />
-                  <StatDisplay name="Control" value={pitch.control} />
-                  <StatDisplay name="Movement" value={pitch.movement} />
+                  <Display name="Velocity" value={pitch.velocity} />
+                  <Display name="Control" value={pitch.control} />
+                  <Display name="Movement" value={pitch.movement} />
                 </div>
               </div>
             ))}
@@ -40,15 +45,13 @@ export default function PitchingOverviewTab({ player }: { player: Player }) {
         )}
       </section>
 
-
-      {/* Status Modifiers - Compact, Single Column */}
+      {/* Status Modifiers */}
       <section>
         <h3 className="text-sm font-semibold text-gray-700 mb-1">Status Modifiers</h3>
         <div className="space-y-1 text-sm">
-          <StatDisplay name="Confidence" value={player.confidence} />
-          <StatDisplay name="Energy" value={player.energy} />
+          <Display name="Confidence" value={player.confidence} />
+          <Display name="Energy" value={player.energy} />
         </div>
-
       </section>
     </div>
   );

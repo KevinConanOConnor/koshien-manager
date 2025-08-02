@@ -33,25 +33,43 @@ export function calculateHittingOverall(player: Player): number {
 
 
 export function calculatePitchingOverall(player: Player): number {
-  if (!player.hasPitchingHistory) return 0;
+  if (!player.hasPitchingHistory || player.pitches.length === 0) return 0;
 
-  const weights = {
-    velocity: 0.35,
-    control: 0.35,
-    movement: 0.2,
-    stamina: 0.1, // You can rename `energy` to `stamina` in the model if you prefer
-  };
+  const staminaWeight = 0.15; // Portion of overall rating from stamina
+  const pitchWeightTotal = 1 - staminaWeight;
 
-  const stamina = player.pitchingStamina;
+  // Step 1: Score each pitch (average of 3 qualities)
+  const scoredPitches = player.pitches.map(pitch => {
+    const score = (pitch.velocity + pitch.movement + pitch.control) / 3;
+    return score;
+  });
 
-  const score =
-    weights.velocity * player.pitchingVelocity +
-    weights.control * player.pitchingControl +
-    weights.movement * player.pitchingMovement +
-    weights.stamina * stamina;
+  // Step 2: Sort pitches by effectiveness
+  scoredPitches.sort((a, b) => b - a); // Highest-rated first
 
-  return Math.round(score);
+  // Step 3: Apply diminishing weights
+  const weightedPitchScore = scoredPitches.reduce((acc, score, i) => {
+    const weight = Math.pow(0.65, i); // Each pitch contributes ~60% as much as the one before
+    return acc + score * weight;
+  }, 0);
+
+  // Step 4: Normalize pitch score to total weight
+  const totalWeight = scoredPitches
+    .map((_, i) => Math.pow(0.7, i))
+    .reduce((a, b) => a + b, 0);
+
+  const normalizedPitchScore = weightedPitchScore / totalWeight;
+
+  // Step 5: Combine with stamina
+  const finalScore =
+    pitchWeightTotal * normalizedPitchScore +
+    staminaWeight * player.pitchingStamina;
+
+  return Math.round(finalScore);
 }
+
+
+
 
 export function calculateFieldingOverall(player: Player): number {
   const { positionalRange, fieldingTechnique, armStrength, armAccuracy } = player;

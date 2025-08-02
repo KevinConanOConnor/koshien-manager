@@ -3,12 +3,12 @@
 
 import { Table } from "@/components/Table";
 import { Player } from "@/models/player";
-import { players } from "@/data/TestPlayers";
+import { getPlayers } from "@/data/TestPlayers";
 import { ColumnDef } from "@tanstack/react-table";
 
 import { CellContext } from "@tanstack/react-table";
 import { getStatColor } from "@/components/player/StatDisplay";
-import { JSX } from "react";
+import { JSX, useEffect, useState } from "react";
 import Link from "next/link";
 import { formatStat } from "@/lib/playerRatings";
 
@@ -72,7 +72,20 @@ const columns: ColumnDef<Player>[] = [
   },
 ];
 
+
+
 export default function PlayerListPage() {
+  const [players, setPlayers] = useState<Player[]>([]);
+
+  useEffect(() => {
+    const loadPlayers = async () => {
+      const data = await getPlayers(); // simulate an API
+      setPlayers(data);
+    };
+    loadPlayers();
+  }, []);
+
+
   return (
     <div className="p-6">
       <h1 className="text-2xl font-bold mb-4">Player List</h1>

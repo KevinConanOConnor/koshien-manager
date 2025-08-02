@@ -1,19 +1,32 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import { players } from "@/data/TestPlayers";
+import { getPlayers } from "@/data/TestPlayers";
 import PlayerCard from "@/components/player/PlayerCard";
 import OverviewTab from "@/components/player/OverviewTab";
 import PitchingOverviewTab from "@/components/player/PitchingOverviewTab";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Player } from "@/models/player";
 
 type TabOption = "overview" | "pitchingOverview" | "coach" | "stats";
 
 export default function PlayerPage() {
   const { id } = useParams();
+  const [players, setPlayers] = useState<Player[]>([]);
+
+  useEffect(() => {
+    const loadPlayers = async () => {
+      const data = await getPlayers(); // simulate an API
+      setPlayers(data);
+    };
+    loadPlayers();
+  }, []);
+
+
+
   const player: Player | undefined = players.find((p) => p.id === id);
   const [activeTab, setActiveTab] = useState<TabOption>("overview");
+  console.log(player)
 
   if (!player) return <div className="p-4">Player not found</div>;
 
