@@ -6,13 +6,13 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace KoshienGameBackend.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class AddOhtaniProfiles : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "FieldingRangeProfile",
+                name: "FieldingProfiles",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
@@ -29,11 +29,11 @@ namespace KoshienGameBackend.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_FieldingRangeProfile", x => x.Id);
+                    table.PrimaryKey("PK_FieldingProfiles", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "PersonalityProfile",
+                name: "PersonalityProfiles",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
@@ -48,7 +48,7 @@ namespace KoshienGameBackend.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PersonalityProfile", x => x.Id);
+                    table.PrimaryKey("PK_PersonalityProfiles", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -85,6 +85,7 @@ namespace KoshienGameBackend.Migrations
                     CoreStrength = table.Column<int>(type: "INTEGER", nullable: false),
                     Speed = table.Column<int>(type: "INTEGER", nullable: false),
                     FieldingRangeProfileId = table.Column<int>(type: "INTEGER", nullable: false),
+                    FieldingRangesId = table.Column<int>(type: "INTEGER", nullable: false),
                     FieldingTechnique = table.Column<int>(type: "INTEGER", nullable: false),
                     ArmStrength = table.Column<int>(type: "INTEGER", nullable: false),
                     ArmAccuracy = table.Column<int>(type: "INTEGER", nullable: false),
@@ -116,15 +117,15 @@ namespace KoshienGameBackend.Migrations
                 {
                     table.PrimaryKey("PK_Players", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Players_FieldingRangeProfile_FieldingRangeProfileId",
-                        column: x => x.FieldingRangeProfileId,
-                        principalTable: "FieldingRangeProfile",
+                        name: "FK_Players_FieldingProfiles_FieldingRangesId",
+                        column: x => x.FieldingRangesId,
+                        principalTable: "FieldingProfiles",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Players_PersonalityProfile_PersonalityProfileId",
+                        name: "FK_Players_PersonalityProfiles_PersonalityProfileId",
                         column: x => x.PersonalityProfileId,
-                        principalTable: "PersonalityProfile",
+                        principalTable: "PersonalityProfiles",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -188,9 +189,9 @@ namespace KoshienGameBackend.Migrations
                 column: "ArsenalId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Players_FieldingRangeProfileId",
+                name: "IX_Players_FieldingRangesId",
                 table: "Players",
-                column: "FieldingRangeProfileId");
+                column: "FieldingRangesId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Players_PersonalityProfileId",
@@ -216,10 +217,10 @@ namespace KoshienGameBackend.Migrations
                 name: "Players");
 
             migrationBuilder.DropTable(
-                name: "FieldingRangeProfile");
+                name: "FieldingProfiles");
 
             migrationBuilder.DropTable(
-                name: "PersonalityProfile");
+                name: "PersonalityProfiles");
 
             migrationBuilder.DropTable(
                 name: "Schools");

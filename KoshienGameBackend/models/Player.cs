@@ -11,7 +11,7 @@ public class Player
     public int Year { get; set; }  // 1-3
 
     public int HeightCm { get; set; }
-    public string PrimaryPosition { get; set; } = ""; // Will replace with enum if defined
+    public FieldingPosition PrimaryPosition { get; set; } // Will replace with enum if defined
     public string BattingSide { get; set; } = "R";     // "L", "R", "S"
     public string ThrowingHand { get; set; } = "R";
 
@@ -30,8 +30,8 @@ public class Player
     public int Speed { get; set; }
 
     // ⚾ Fielding
-    public int FieldingRangeProfileId { get; set; }           // FK (foreign key)
-    public FieldingRangeProfile FieldingRange { get; set; } = new(); // Navigation property
+    public int FieldingProfileID { get; set; }           // FK (foreign key)
+    public FieldingProfile FieldingExperience { get; set; } = new(); // Navigation property
 
     public int FieldingTechnique { get; set; }
     public int ArmStrength { get; set; }
@@ -43,7 +43,7 @@ public class Player
     public int GamePower { get; set; }
     public int BattingEye { get; set; }
 
-    // 🎯 Potentials
+    // 🎯 Potentials, can be thought of of as a talent rating
     public int PotentialHitting { get; set; }
     public int PotentialCoordination { get; set; }
     public int PotentialStrength { get; set; }
@@ -56,11 +56,12 @@ public class Player
     public int PitchingVelocity { get; set; }
     public int PitchingControl { get; set; }
     public int PitchingMovement { get; set; }
-    public int PitchingStamina { get; set; }
+    public int Stamina { get; set; }
 
     // 📈 Status
     public int Confidence { get; set; }
-    public int Energy { get; set; }
+    public int ArmEnergy { get; set; } //Can be thought of as pitching energy
+    public int OverallEnergy { get; set; }
 
     // 🏅 Narrative
     public string BondsJson { get; set; } = "[]";

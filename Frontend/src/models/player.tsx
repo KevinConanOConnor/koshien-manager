@@ -65,7 +65,7 @@ export interface Player {
   pitchingVelocity: number;           // DEV STAT - Governs max velocity + arm strength
   pitchingControl: number;            // DEV STAT - Governs command + arm accuracy
   pitchingMovement: number;           // DEV STAT - Governs break on pitches
-  pitchingStamina: number;
+  stamina: number;
 
 
 

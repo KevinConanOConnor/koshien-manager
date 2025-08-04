@@ -1,18 +1,45 @@
+// Controllers/PlayersController.cs
+using Microsoft.AspNetCore.Mvc;
+using KoshienGameBackend.Models;
+using KoshienGameBackend.Services;
+
 [ApiController]
-[Route("api/player")]
-public class PlayerController : ControllerBase
+[Route("api/[controller]")]
+public class PlayersController : ControllerBase
 {
-    private readonly PlayerGenerator _playerGenerator;
+    private readonly PlayerService _playerService;
 
-    public PlayerController(PlayerGenerator playerGenerator)
+    public PlayersController(PlayerService playerService)
     {
-        _playerGenerator = playerGenerator;
+        _playerService = playerService;
     }
 
-    // GET /api/player/generate
-    [HttpGet("generate")]
-    public ActionResult<Player> GeneratePlayer()
+    [HttpGet]
+    public async Task<IActionResult> GetPlayers()
     {
-        var player = _playerGenerator.GeneratePlayer();
-        return Ok(player); // Returns JSON
+        var players = await _playerService.GetPlayersAsync();
+        return Ok(players);
     }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetPlayer(Guid id)
+    {
+        var players = await _playerService.GetPlayersAsync();
+        return Ok(players);
+    }
+
+
+    [HttpPost]
+    public async Task<IActionResult> CreatePlayer([FromBody] Player player)
+    {
+        var created = await _playerService.CreatePlayerAsync(player);
+        return CreatedAtAction(nameof(GetPlayers), new { id = created.Id }, created);
+    }
+
+    [HttpPost("sample")]
+    public async Task<IActionResult> CreateOhtani()
+    {
+        var player = await _playerService.CreateOhtaniAsync();
+        return CreatedAtAction(nameof(GetPlayer), new { id = player.Id }, player);
+    }
+}

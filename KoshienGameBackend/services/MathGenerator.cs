@@ -7,7 +7,7 @@ public class MathGenerator
     private readonly Random _rng = new();
 
     // 🎲 Normal distribution generator using Box-Muller
-    public double Normal(double mean = 0, double stdDev = 1)
+    public double Normal(double mean = 0, double stdDev = 1.0)
     {
         var u1 = 1.0 - _rng.NextDouble();
         var u2 = 1.0 - _rng.NextDouble();
@@ -57,4 +57,8 @@ public class MathGenerator
 
         return items.Last().item;
     }
+
+
+
+    
 }

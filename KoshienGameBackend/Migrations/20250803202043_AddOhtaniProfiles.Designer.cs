@@ -11,16 +11,16 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KoshienGameBackend.Migrations
 {
     [DbContext(typeof(GameDbContext))]
-    [Migration("20250803172945_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250803202043_AddOhtaniProfiles")]
+    partial class AddOhtaniProfiles
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "9.0.7");
+            modelBuilder.HasAnnotation("ProductVersion", "8.0.6");
 
-            modelBuilder.Entity("FieldingRangeProfile", b =>
+            modelBuilder.Entity("FieldingProfile", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -55,7 +55,7 @@ namespace KoshienGameBackend.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("FieldingRangeProfile");
+                    b.ToTable("FieldingProfiles");
                 });
 
             modelBuilder.Entity("KoshienGameBackend.Models.Arsenal", b =>
@@ -104,7 +104,7 @@ namespace KoshienGameBackend.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PersonalityProfile");
+                    b.ToTable("PersonalityProfiles");
                 });
 
             modelBuilder.Entity("KoshienGameBackend.Models.Pitch", b =>
@@ -177,6 +177,9 @@ namespace KoshienGameBackend.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("FieldingRangeProfileId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("FieldingRangesId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("FieldingTechnique")
@@ -272,7 +275,7 @@ namespace KoshienGameBackend.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("FieldingRangeProfileId");
+                    b.HasIndex("FieldingRangesId");
 
                     b.HasIndex("PersonalityProfileId");
 
@@ -324,9 +327,9 @@ namespace KoshienGameBackend.Migrations
 
             modelBuilder.Entity("KoshienGameBackend.Models.Player", b =>
                 {
-                    b.HasOne("FieldingRangeProfile", "FieldingRange")
+                    b.HasOne("FieldingProfile", "FieldingRanges")
                         .WithMany()
-                        .HasForeignKey("FieldingRangeProfileId")
+                        .HasForeignKey("FieldingRangesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -340,7 +343,7 @@ namespace KoshienGameBackend.Migrations
                         .WithMany("Players")
                         .HasForeignKey("SchoolId");
 
-                    b.Navigation("FieldingRange");
+                    b.Navigation("FieldingRanges");
 
                     b.Navigation("Personality");
                 });

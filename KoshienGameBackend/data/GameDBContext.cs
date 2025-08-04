@@ -10,4 +10,9 @@ public class GameDbContext : DbContext
 
     public DbSet<Player> Players => Set<Player>();
     public DbSet<School> Schools => Set<School>();
+
+    public DbSet<PersonalityProfile> PersonalityProfiles => Set<PersonalityProfile>();
+
+    public DbSet<FieldingProfile> FieldingProfiles => Set<FieldingProfile>();
+
 }
