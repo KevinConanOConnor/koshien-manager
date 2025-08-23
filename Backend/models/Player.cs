@@ -15,7 +15,7 @@ public class Player
     public string BattingSide { get; set; } = "R";     // "L", "R", "S"
     public string ThrowingHand { get; set; } = "R";
 
-    // 📊 Overalls
+    // 📊 Overall. These Stats are Aggregations generated for display purposes
     public int HittingOverall { get; set; }
     public int FieldingOverall { get; set; }
     public int PitchingOverall { get; set; }
