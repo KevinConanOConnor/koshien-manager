@@ -1,9 +1,10 @@
 using KoshienGameBackend.Models;
 using KoshienGameBackend.Services;
 
+
+
 public class PlayerBuilder
 {
-    private readonly NameBank _nameBank;
     private readonly MathGenerator _math;
 
     public PlayerBuilder(NameBank nameBank, MathGenerator math)
@@ -17,7 +18,7 @@ public class PlayerBuilder
     public Player CreateFirstYear()
     {
         int Year = 1;
-        string FirstName = _nameBank.RandomFirstName();
+        string FirstName = Namebank.RandomFirstName();
         string LastName = _nameBank.RandomLastName();
         //Average Height of a first year will be 167 with std. deviation of 7. Min height will be 150. (1 standard deviation is 174, 2 is 181, 3 is 188, 4 is 195)
         int HeightCm = _math.GenerateStat(167, 7, 150);
